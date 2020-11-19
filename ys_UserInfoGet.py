@@ -1,4 +1,3 @@
-#https://github.com/Womsxd/YuanShen_User_Info
 import sys
 import json
 import time
@@ -53,7 +52,7 @@ def JsonAnalysis(JsonText):
         )
     else:
         pass
-    Character_Info = "人物："
+    Character_Info = "\n人物：\n"
     Character_List = []
     Character_List = data["data"]["avatars"]
     for i in Character_List:
@@ -78,13 +77,13 @@ def JsonAnalysis(JsonText):
                 TempText = (
                     i["name"]+ "[萤——妹妹]" + 
                     "（" + str(i["level"]) + "级，" 
-                    + Character_Type + "）"
+                    + Character_Type + "）\n"
                 )
             elif (i["image"].find("UI_AvatarIcon_PlayerBoy") != -1):
                 TempText = (
                     i["name"]+ "[空——哥哥]" + 
                     "（" + str(i["level"]) + "级，" 
-                    + Character_Type + "）"
+                    + Character_Type + "）\n"
                 )
             else:
                 TempText = (
@@ -98,29 +97,29 @@ def JsonAnalysis(JsonText):
                 "（" + str(i["level"]) + "级，" 
                 + "好感度为" + str(i["fetter"]) + "级，" 
                 + str(i["rarity"]) + "★角色，"
-                + Character_Type + "）"
+                + Character_Type + "）\n"
             )
         Character_Info = Character_Info + TempText
     Account_Info = (
-        "活跃天数：" + str(data["data"]["stats"]["active_day_number"]) +
+        "\n活跃天数：" + str(data["data"]["stats"]["active_day_number"]) +
         "，一共达成了" + str(data["data"]["stats"]["achievement_number"]) +
-        "个成就，风神瞳收集了" + str(data["data"]["stats"]["anemoculus_number"]) +
-        "个，岩神瞳收集了" + str(data["data"]["stats"]["geoculus_number"]) +
-        "个，目前获得了" + str(data["data"]["stats"]["avatar_number"]) +
-        "个角色，解锁了" + str(data["data"]["stats"]["way_point_number"]) +
+        "个成就，\n风神瞳收集了" + str(data["data"]["stats"]["anemoculus_number"]) +
+        "个，\n岩神瞳收集了" + str(data["data"]["stats"]["geoculus_number"]) +
+        "个，\n目前获得了" + str(data["data"]["stats"]["avatar_number"]) +
+        "个角色，\n解锁了" + str(data["data"]["stats"]["way_point_number"]) +
         "个传送点和" + str(data["data"]["stats"]["domain_number"]) +
-        "个秘境，深境螺旋当期目前"
+        "个秘境，\n深境螺旋当期目前"
     )
     if (data["data"]["stats"]["spiral_abyss"] == "-"):
         Account_Info = Account_Info + "没打"
     else:
         Account_Info = Account_Info + "打到了" + data["data"]["stats"]["spiral_abyss"]
     Account_Info = Account_Info + (
-        "，一共开启了" + str(data["data"]["stats"]["common_chest_number"]) +
-        "个普通宝箱，" + str(data["data"]["stats"]["exquisite_chest_number"]) +
-        "个精致宝箱，" + str(data["data"]["stats"]["precious_chest_number"]) +
-        "个珍贵宝箱，" + str(data["data"]["stats"]["luxurious_chest_number"]) +
-        "个华丽宝箱"
+        "，\n一共开启了" + str(data["data"]["stats"]["common_chest_number"]) +
+        "个普通宝箱，\n" + str(data["data"]["stats"]["exquisite_chest_number"]) +
+        "个精致宝箱，\n" + str(data["data"]["stats"]["precious_chest_number"]) +
+        "个珍贵宝箱，\n" + str(data["data"]["stats"]["luxurious_chest_number"]) +
+        "个华丽宝箱\n\n"
     )
     Prestige_Info = "声望信息："
     Prestige_list = []
@@ -133,6 +132,7 @@ def JsonAnalysis(JsonText):
 
 if __name__ == "__main__":
     while True:
+        print(DSGet())
         uid = input("请输入要查询的UID(目前仅支持国内服务器，退出请输入exit)：")
         try:
             uid = str(int(uid))
